@@ -14,7 +14,8 @@
 ## **実行方法**
 
 ```sh
-go run cmd/basic/main.go
+go run cmd/basic/main.go  #チャネルの基本実装
+go run cmd/multi/main.go  #複数のgoroutineからデータを受信
 ```
 
 ## **学習ポイント**
@@ -24,6 +25,7 @@ go run cmd/basic/main.go
 3. **送信側 (`ch <- value`) がデータを送ると、受信側 (`<-ch`) が受け取るまでブロックされる**
 4. **バッファなしチャネル（`make(chan string)`）では、送信と受信が同期的に行われる**
 5. **`close(ch)` を使うことで、チャネルを明示的に閉じることができる**
+6. **非同期で複数の `worker` を起動し、それぞれの完了メッセージを `channel` に送信**
 
 ## 作成者
 

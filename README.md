@@ -16,6 +16,7 @@
 ```sh
 go run cmd/basic/main.go  #チャネルの基本実装
 go run cmd/multi/main.go  #複数のgoroutineからデータを受信
+go run cmd/limit/main.go  #ジョブの並列実行を制限
 ```
 
 ## **学習ポイント**
@@ -26,6 +27,8 @@ go run cmd/multi/main.go  #複数のgoroutineからデータを受信
 4. **バッファなしチャネル（`make(chan string)`）では、送信と受信が同期的に行われる**
 5. **`close(ch)` を使うことで、チャネルを明示的に閉じることができる**
 6. **非同期で複数の `worker` を起動し、それぞれの完了メッセージを `channel` に送信**
+7. **`defer wg.Done()` を使うことで、関数の終了時に確実に `wg.Done()` を実行し、ゴルーチンが終了するたびに `sync.WaitGroup` のカウントが減る**
+8. **チャネルを close() しないと、受信側が range を抜けずにデッドロックが発生する可能性がある**
 
 ## 作成者
 

@@ -17,6 +17,7 @@
 go run cmd/basic/main.go  #チャネルの基本実装
 go run cmd/multi/main.go  #複数のgoroutineからデータを受信
 go run cmd/limit/main.go  #ジョブの並列実行を制限
+go run cmd/waitGroup/main.go  #sync.WaitGroup + channelでジョブの同期処理
 ```
 
 ## **学習ポイント**
